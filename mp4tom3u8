@@ -1,0 +1,41 @@
+https://www.programmersought.com/article/57094856293/
+
+
+ffmpeg download address
+
+https://ffmpeg.zeranoe.com/builds/
+
+This is my own ffmpeg, and those who have points can download it willfully
+
+ffmpeg compressed package
+
+After downloading and decompressing, you need to add ffmpeg to the environment variable
+
+
+
+Enter ffmpeg -version in cmd, the configuration is successful if the following message appears
+
+
+
+Transfer Mp4 files to m3u8
+
+Enter the command in cmd
+
+ffmpeg -i E:\video\6.mp4 -profile:v baseline -level 3.0 -s 640x360 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls E:\m3u8\6.m3u8
+
+
+
+<script src="https://cdn.bootcss.com/hls.js/8.0.0-beta.3/hls.min.js"></script>
+ 
+<video id="videoId"></video>
+<script>
+  if(Hls.isSupported()) {
+    var video = document.getElementById('videoId');
+    var hls = new Hls();
+    hls.loadSource('http://192.168.1.39:8030/statics/6.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+    });
+  }
+</script>
